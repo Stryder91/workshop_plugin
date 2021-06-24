@@ -212,13 +212,12 @@ const NewProject = () => {
             ?
             <div>
                 <div className="d-flex flex-wrap">
-                {selected.map( el => {
-                    <div id={el} style={style.bigContainerIcon}>
-                        <img style={style.imgWidth} src={MA_LISTE[el]} alt="service_icon" />
-                    </div>
-                })}
+                {selected.map( el => <div style={style.bigContainerIcon}><img style={style.imgWidth} src={MA_LISTE[el]} alt="service_icon" /></div>)}
                 </div>
                 <Input placeholder="Choisissez un nom" />
+                <div className="d-flex">
+                    <Button onClick={() => setSteps(steps+1)} style={style.mauto} variant="success">Partager</Button>
+                </div>
             </div>
             :null}
         </div>
