@@ -146,83 +146,77 @@ const style = {
     containerFlatIcon: {
         display: 'flex',
         justifyContent: 'center',
+    },
+    mauto: {
+        margin: 'auto'
     }
 };
 
-const MA_LISTE = {
-    un: "https://image.flaticon.com/icons/png/512/281/281769.png",
-    deux: "https://cdn.shopify.com/s/files/1/1713/4683/products/logo-zoom-new_d82834f9-7569-4c42-927e-e486c33f5396_800x.png?v=1612135156",
-    trois: "https://img2.freepng.fr/20190622/khw/kisspng-github-continuous-integration-microsoft-azure-sour-innovation-research-lab-irl-5d0ee306c7f871.6978428915612567108191.jpg"
-}
-const NewProject = ({setMyState}) => {
+const MA_LISTE = [
+    "https://image.flaticon.com/icons/png/512/281/281769.png",
+    "https://cdn.shopify.com/s/files/1/1713/4683/products/logo-zoom-new_d82834f9-7569-4c42-927e-e486c33f5396_800x.png?v=1612135156",
+    "https://img2.freepng.fr/20190622/khw/kisspng-github-continuous-integration-microsoft-azure-sour-innovation-research-lab-irl-5d0ee306c7f871.6978428915612567108191.jpg",
+    "https://uploads-ssl.webflow.com/5ebd54898c31000820363e17/5f282977eb5bb481b3fd4385_trello.png",
+    "https://neo-form.fr/wp-content/uploads/2018/09/google-slides.png", 
+    "https://neo-form.fr/wp-content/uploads/2018/09/google-slides.png",
+    "https://upload.wikimedia.org/wikipedia/commons/1/12/Google_Drive_icon_%282020%29.svg",
+    "http://assets.stickpng.com/images/5847f997cef1014c0b5e48c1.png",
+    "https://img.icons8.com/small/452/github.png",
+    "https://brandslogos.com/wp-content/uploads/thumbs/dropbox-logo-vector-2.svg",  
+    "https://git-scm.com/images/logos/downloads/Git-Icon-1788C.png",
+    "https://logo-marque.com/wp-content/uploads/2021/03/Jira-Embleme.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/3/33/Figma-logo.svg",
+    "https://img2.freepng.fr/20180720/vi/kisspng-redmine-computer-icons-logo-clip-art-redmine-5b5253f819daa0.9441945415321221041059.jpg"
+];
 
-    const [selected, setSelected] = useState({});
-    const [steps, setSteps] = useState(0)
-    const selectService = (e) => {
-        const id = e.target.id;
-        setSelected({...selected, [id]: true})
+
+const NewProject = () => {
+
+    const [selected, setSelected] = useState([]);
+    const [steps, setSteps] = useState(0);
+
+    const selectService = (id) => {
+        console.log("selected", selected);
+        setSelected([...selected, id]);
     }
 
     return(
     <div style={style.grey}>
         <div>
-            <div> <h5 ><b>Créer un nouveau projet</b></h5> </div>
+            <div> <h5><b>Créer un nouveau projet</b></h5> </div>
 
-            {(steps == 1) ? 
+            {(steps === 0) ? 
             <>
             <Input placeholder="Rechercher un web service" />
             <p className="pt-4">Selectionner un ou plusieurs webservice</p>
             <div className="d-flex flex-wrap">
                 <FontAwesomeIcon icon={faGoogleDrive} />
-                <div onClick={(e) => selectService(e)} id="un" style={style.bigContainerIcon}>
-                    <img style={style.imgWidth} src={MA_LISTE.first} alt="gmail_icon" />
-                </div>
-                <div onClick={(e) => selectService(e)} id="2" style={style.bigContainerIcon}>
-                    <img style={style.imgWidth} src={MA_LISTE.deux} alt="meet_icon" />
-                </div>
-                <div onClick={(e) => selectService(e)} id="3" style={style.bigContainerIcon}>
-                    <img style={style.imgWidth} src={MA_LISTE.trois} alt="slide_icon" />
-                </div>
-                <div onClick={(e) => selectService(e)} id="4" style={style.bigContainerIcon}>
-                    <img style={style.imgWidth} src="https://uploads-ssl.webflow.com/5ebd54898c31000820363e17/5f282977eb5bb481b3fd4385_trello.png" alt="trello_icon" />
-                </div>
-                <div onClick={(e) => selectService(e)} id="5" style={style.bigContainerIcon}>
-                    <img style={style.imgWidth} src="https://neo-form.fr/wp-content/uploads/2018/09/google-slides.png" alt="slide_icon" />
-                </div>
-                <div onClick={(e) => selectService(e)} id="6" style={style.bigContainerIcon}>
-                    <img style={style.imgWidth} src="https://upload.wikimedia.org/wikipedia/commons/1/12/Google_Drive_icon_%282020%29.svg" alt="drive_icon" />
-                </div>
-                <div onClick={(e) => selectService(e)} id="7" style={style.bigContainerIcon}>
-                    <img style={style.imgWidth} src="http://assets.stickpng.com/images/5847f997cef1014c0b5e48c1.png" alt="gitlab_icon" />
-                </div>
-                <div onClick={(e) => selectService(e)} id="8" style={style.bigContainerIcon}>
-                    <img style={style.imgWidth} src="https://img.icons8.com/small/452/github.png" alt="github_icon" />
-                </div>
-                <div onClick={(e) => selectService(e)} id="9" style={style.bigContainerIcon}>
-                    <img style={style.imgWidth} src="https://brandslogos.com/wp-content/uploads/thumbs/dropbox-logo-vector-2.svg" alt="dropbox_icon" />
-                </div>
-                <div onClick={(e) => selectService(e)} id="10" style={style.bigContainerIcon}>
-                    <img style={style.imgWidth} src="https://git-scm.com/images/logos/downloads/Git-Icon-1788C.png" alt="git_icon" />
-                </div>
-                <div onClick={(e) => selectService(e)} id="11" style={style.bigContainerIcon}>
-                    <img style={style.imgWidth} src="https://logo-marque.com/wp-content/uploads/2021/03/Jira-Embleme.jpg" alt="jira_icon" />
-                </div>
-                <div onClick={(e) => selectService(e)} id="12" style={style.bigContainerIcon}>
-                    <img style={style.imgWidth} src="https://upload.wikimedia.org/wikipedia/commons/3/33/Figma-logo.svg" alt="figma_icon" />
-                </div>
-                <div onClick={(e) => selectService(e)} id="13" style={style.bigContainerIcon}>
-                    <img style={style.imgWidth} src="https://img2.freepng.fr/20180720/vi/kisspng-redmine-computer-icons-logo-clip-art-redmine-5b5253f819daa0.9441945415321221041059.jpg" alt="redmine_icon" />
-                </div>
+                {
+                MA_LISTE.map((el, index) => 
+                    <div onClick={() => selectService(index)} id={index} style={style.bigContainerIcon}>
+                        <img style={style.imgWidth} src={el} alt="service_icon" />
+                    </div>
+                ) 
+                }
+                
             </div>
+            {(selected && selected.length > 1) 
+            ?
             <div className="d-flex">
-                <Button onClick={goNext} className="m-auto" variant="info">Valider</Button>
+                <Button onClick={() => setSteps(steps+1)} style={style.mauto} variant="secondary">Valider</Button>
             </div>
+            :null}
             </>
             :
-            (steps == 2) 
+            (steps == 1) 
             ?
             <div>
                 <div className="d-flex flex-wrap">
+                {selected.map( el => {
+                    <div id={el} style={style.bigContainerIcon}>
+                        <img style={style.imgWidth} src={MA_LISTE[el]} alt="service_icon" />
+                    </div>
+                })}
                 </div>
                 <Input placeholder="Choisissez un nom" />
             </div>
@@ -231,4 +225,41 @@ const NewProject = ({setMyState}) => {
     </div> 
     );
 }
+
+{/* <div onClick={(e) => selectService(e)} id="2" style={style.bigContainerIcon}>
+    <img style={style.imgWidth} src={MA_LISTE.deux} alt="meet_icon" />
+</div>
+<div onClick={(e) => selectService(e)} id="3" style={style.bigContainerIcon}>
+    <img style={style.imgWidth} src={MA_LISTE.trois} alt="slide_icon" />
+</div>
+<div onClick={(e) => selectService(e)} id="4" style={style.bigContainerIcon}>
+    <img style={style.imgWidth} src={MA_LISTE} alt="trello_icon" />
+</div>
+<div onClick={(e) => selectService(e)} id="5" style={style.bigContainerIcon}>
+    <img style={style.imgWidth} src="" alt="slide_icon" />
+</div>
+<div onClick={(e) => selectService(e)} id="6" style={style.bigContainerIcon}>
+    <img style={style.imgWidth} src="" alt="drive_icon" />
+</div>
+<div onClick={(e) => selectService(e)} id="7" style={style.bigContainerIcon}>
+    <img style={style.imgWidth} src="" alt="gitlab_icon" />
+</div>
+<div onClick={(e) => selectService(e)} id="8" style={style.bigContainerIcon}>
+    <img style={style.imgWidth} src="" alt="github_icon" />
+</div>
+<div onClick={(e) => selectService(e)} id="9" style={style.bigContainerIcon}>
+    <img style={style.imgWidth} src="" alt="dropbox_icon" />
+</div>
+<div onClick={(e) => selectService(e)} id="10" style={style.bigContainerIcon}>
+    <img style={style.imgWidth} src="" alt="git_icon" />
+</div>
+<div onClick={(e) => selectService(e)} id="11" style={style.bigContainerIcon}>
+    <img style={style.imgWidth} src="" alt="jira_icon" />
+</div>
+<div onClick={(e) => selectService(e)} id="12" style={style.bigContainerIcon}>
+    <img style={style.imgWidth} src="" alt="figma_icon" />
+</div>
+<div onClick={(e) => selectService(e)} id="13" style={style.bigContainerIcon}>
+    <img style={style.imgWidth} src="" alt="redmine_icon" />
+</div> */}
 export default MyAccordeon;
