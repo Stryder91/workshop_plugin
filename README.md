@@ -1,6 +1,11 @@
 # Milo Plugin
 
 Here is our Milo plugin!
+## Table of Contents
+1. [General Info](#general-info)
+2. [Technologies](#technologies)
+3. [Requirements](#requirements)
+4. [Collaboration](#collaboration)
 
 ### General Info
 *
@@ -24,8 +29,19 @@ and then select your .tar.gz which is in dist/
 
 Don't forget to enable the plugin in the adminstrator panel.
 
+## Technologies
+*
+A list of technologies used within the project:
+* [React](https://fr.reactjs.org/versions/): Version 16.13
+* [Docker](https://docs.docker.com/engine/reference/commandline/version/): Version 20.10
+* [Go](https://golang.org/dl/): Version 1.16.5
 
-## Releasing this plugin
+
+## Collaboration
+*
+In order to collaborate you do a pull request, propose your modifications with an explanation of what and why it should be modified.
+
+## Use this plugin
 
 In this plugin you will be able to use predefined scenarios or create or own custom scenarios
 to interact with others webservices (at the same time) from the Mattermost chat.
