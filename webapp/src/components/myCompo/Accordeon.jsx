@@ -158,7 +158,6 @@ const MA_LISTE = [
     "https://img2.freepng.fr/20190622/khw/kisspng-github-continuous-integration-microsoft-azure-sour-innovation-research-lab-irl-5d0ee306c7f871.6978428915612567108191.jpg",
     "https://uploads-ssl.webflow.com/5ebd54898c31000820363e17/5f282977eb5bb481b3fd4385_trello.png",
     "https://neo-form.fr/wp-content/uploads/2018/09/google-slides.png", 
-    "https://neo-form.fr/wp-content/uploads/2018/09/google-slides.png",
     "https://upload.wikimedia.org/wikipedia/commons/1/12/Google_Drive_icon_%282020%29.svg",
     "http://assets.stickpng.com/images/5847f997cef1014c0b5e48c1.png",
     "https://img.icons8.com/small/452/github.png",
@@ -166,7 +165,8 @@ const MA_LISTE = [
     "https://git-scm.com/images/logos/downloads/Git-Icon-1788C.png",
     "https://logo-marque.com/wp-content/uploads/2021/03/Jira-Embleme.jpg",
     "https://upload.wikimedia.org/wikipedia/commons/3/33/Figma-logo.svg",
-    "https://img2.freepng.fr/20180720/vi/kisspng-redmine-computer-icons-logo-clip-art-redmine-5b5253f819daa0.9441945415321221041059.jpg"
+    "https://img2.freepng.fr/20180720/vi/kisspng-redmine-computer-icons-logo-clip-art-redmine-5b5253f819daa0.9441945415321221041059.jpg",
+    "https://cdn.worldvectorlogo.com/logos/miro-2.svg"
 ];
 
 
@@ -174,11 +174,22 @@ const NewProject = () => {
 
     const [selected, setSelected] = useState([]);
     const [steps, setSteps] = useState(0);
+    const [name, getName] = useState('');
 
     const selectService = (id) => {
         console.log("selected", selected);
         setSelected([...selected, id]);
     }
+
+    const setNameToChat = () => {
+        const myString = "Milo " + name;
+        const myInput = document.getElementById('post_textbox');
+        const divToErase = myInput.previousElementSibling;
+        divToErase.innerHTML = "";
+        myInput.placeholder = "";
+        myInput.value = myString;
+    }
+
 
     return(
     <div style={style.grey}>
@@ -200,7 +211,7 @@ const NewProject = () => {
                 }
                 
             </div>
-            {(selected && selected.length > 1) 
+            {(selected && selected.length > 0) 
             ?
             <div className="d-flex">
                 <Button onClick={() => setSteps(steps+1)} style={style.mauto} variant="secondary">Valider</Button>
@@ -211,12 +222,12 @@ const NewProject = () => {
             (steps == 1) 
             ?
             <div>
-                <div className="d-flex flex-wrap">
+                <div className="d-flex flex-wrap justify-content-center">
                 {selected.map( el => <div style={style.bigContainerIcon}><img style={style.imgWidth} src={MA_LISTE[el]} alt="service_icon" /></div>)}
                 </div>
-                <Input placeholder="Choisissez un nom" />
-                <div className="d-flex">
-                    <Button onClick={() => setSteps(steps+1)} style={style.mauto} variant="success">Partager</Button>
+                <Input onChange={(e) => getName(e.target.value)} placeholder="Choisissez un nom" />
+                <div className="d-flex mt-5">
+                    <Button onClick={setNameToChat} style={style.mauto} variant="success">Partager</Button>
                 </div>
             </div>
             :null}
@@ -224,6 +235,7 @@ const NewProject = () => {
     </div> 
     );
 }
+https://cdn.worldvectorlogo.com/logos/miro-2.svg
 
 {/* <div onClick={(e) => selectService(e)} id="2" style={style.bigContainerIcon}>
     <img style={style.imgWidth} src={MA_LISTE.deux} alt="meet_icon" />
